@@ -1,0 +1,31 @@
+
+<body>
+
+  <!-- Die widget; displays "20" by default -->
+  <div class="dice" id="dice">20</div>
+
+  <script>
+    const dice = document.getElementById('dice');
+
+    function rollDice() {
+      // Remove any existing animation to reset it correctly
+      dice.classList.remove('rolling');
+      // Trick to force reflow and allow restarting the animation
+      void dice.offsetWidth;
+      
+      // Generate a random integer between 1 and 20
+      const roll = Math.floor(Math.random() * 20) + 1;
+      // Display the result
+      dice.textContent = roll;
+      
+      // Add the rolling class to start the animation
+      dice.classList.add('rolling');
+    }
+
+    // Listen for both clicks and tap events for touchscreen devices
+    dice.addEventListener('click', rollDice);
+    dice.addEventListener('touchstart', rollDice);
+  </script>
+
+</body>
+</html>
